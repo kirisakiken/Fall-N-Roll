@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace BezmicanZehir.Core.Managers
@@ -9,11 +10,13 @@ namespace BezmicanZehir.Core.Managers
     {
         public static int CurrentSceneIndex;
 
+        public UnityEvent onSceneTransition;
+
         private void Awake()
         {
             CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         }
-
+        
         public static void PauseGame()
         {
             Time.timeScale = 0.0f;
@@ -26,18 +29,18 @@ namespace BezmicanZehir.Core.Managers
 
         public void ResetLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(CurrentSceneIndex);
         }
 
         public void LoadLevel(int levelIndex)
         {
             //StartCoroutine(LoadAsync(levelIndex));
+            Time.timeScale = 1.0f;
             SceneManager.LoadScene(levelIndex);
         }
 
         private IEnumerator LoadAsync(int levelIndex)
         {
-            
             yield return null;
         }
 

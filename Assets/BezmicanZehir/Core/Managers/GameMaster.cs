@@ -16,7 +16,7 @@ namespace BezmicanZehir.Core.Managers
         private float[] _distances;
         public static int PlayerCount;
 
-        private bool _roundIsLive;
+        public static bool RoundIsLive;
         private bool _playerWon;
 
         public delegate void RoundFinish(bool playerHasWon);
@@ -25,7 +25,7 @@ namespace BezmicanZehir.Core.Managers
         private void Awake()
         {
             _playerWon = false;
-            _roundIsLive = true;
+            RoundIsLive = true;
             
             LockFrameLimit();
             FindPlayerAndAgents();
@@ -35,24 +35,24 @@ namespace BezmicanZehir.Core.Managers
 
         private void Update()
         {
-            if (!_roundIsLive) return;
+            if (!RoundIsLive) return;
 
             PlayerMove.Rank = GetPlayerRank();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_roundIsLive) return;
+            if (!RoundIsLive) return;
             
             if (other.CompareTag("Player"))
             {
-                _roundIsLive = false;
+                RoundIsLive = false;
                 _playerWon = true;
                 roundFinish?.Invoke(_playerWon);
             }
             else if (other.CompareTag("AI"))
             {
-                _roundIsLive = false;
+                RoundIsLive = false;
                 _playerWon = false;
                 roundFinish?.Invoke(_playerWon);
             }

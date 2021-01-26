@@ -36,9 +36,14 @@ namespace BezmicanZehir.Core.Managers
             
             _isPaused = false;
             StartCoroutine(FadeIn());
-
-            maxPlayerText.text = GameMaster.PlayerCount.ToString();
+            
+            if (currentLevelIndex == 1)
+            {
+                Painter.endSinglePlayerLevel += OpenGameOverWindow;
+                return;
+            }
             GameMaster.roundFinish += OpenGameOverWindow;
+            maxPlayerText.text = GameMaster.PlayerCount.ToString();
         }
 
         private void Update()
@@ -53,6 +58,8 @@ namespace BezmicanZehir.Core.Managers
                 }
             }
 
+            if (currentLevelIndex == 1) return;
+            
             SetPlayerRankOnUI();
         }
 
@@ -113,6 +120,7 @@ namespace BezmicanZehir.Core.Managers
 
         private void OpenGameOverWindow(bool playerHasWon)
         {
+            UnlockCursor();
             gameOverWindow.SetActive(true);
             
             if (playerHasWon)

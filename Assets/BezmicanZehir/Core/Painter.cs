@@ -24,14 +24,18 @@ namespace BezmicanZehir.Core
         [SerializeField] private RectTransform sliderParent;
         [SerializeField] private Slider slider;
         [SerializeField] private TMP_Text percentageText;
-        
 
+
+        private int _paintedPercentage;
         private Texture2D _currentTexture;
         private Color32[] _colors;
         private MeshRenderer _paintableMeshRenderer;
         private bool _canPaint;
         private WaitForSeconds _waitForFinish;
         private WaitForSeconds _shortDelay;
+
+        public delegate void EndSinglePlayerLevel(bool playerHasWon);
+        public static EndSinglePlayerLevel endSinglePlayerLevel;
     
         private void Start()
         {
@@ -55,8 +59,16 @@ namespace BezmicanZehir.Core
             }
             if (Input.GetMouseButtonUp(0))
             {
-                var paintedPercentage = GetPaintedPercentage(_currentTexture, Color.red);
-                UpdateSlider(paintedPercentage);
+                _paintedPercentage = GetPaintedPercentage(_currentTexture, Color.red);
+                UpdateSlider(_paintedPercentage);
+            }
+
+            if (_paintedPercentage >= 99)
+            {
+                _paintedPercentage = 100;
+                UpdateSlider(_paintedPercentage);
+                endSinglePlayerLevel?.Invoke(true);
+                _canPaint = false;
             }
         }
 

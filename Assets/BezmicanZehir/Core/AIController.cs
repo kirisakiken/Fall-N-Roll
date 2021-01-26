@@ -42,7 +42,7 @@ namespace BezmicanZehir.Core
         public delegate void ResetReward(AIController agentController);
         public ResetReward resetReward;
 
-        private IEnumerator Start()
+        private void Awake()
         {
             _agentCollider = GetComponent<CapsuleCollider>();
             
@@ -52,7 +52,10 @@ namespace BezmicanZehir.Core
             
             _spawnPoint = agentBodyTransform.position;
             _spawnRotation = humanoidTransform.rotation;
+        }
 
+        private IEnumerator Start()
+        {
             yield return _waitForRespawn;
             _canMove = true;
             GameMaster.roundFinish += EndLevel;
@@ -76,6 +79,7 @@ namespace BezmicanZehir.Core
 
         public override void OnActionReceived(float[] vectorAction)
         {
+            if (!GameMaster.RoundIsLive) return;
             if (!_canMove) return;
             
             var x = vectorAction[0];

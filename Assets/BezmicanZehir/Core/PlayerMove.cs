@@ -44,7 +44,7 @@ namespace BezmicanZehir.Core
         public delegate void ExecutePaintRoutine();
         public ExecutePaintRoutine executePaintRoutine;
 
-        private IEnumerator Start()
+        private void Awake()
         {
             _canMove = false;
             _waitForDeath = new WaitForSeconds(deathClip.length);
@@ -57,13 +57,18 @@ namespace BezmicanZehir.Core
             
             _spawnPoint = _playerTransform.position;
             _spawnRotation = humanoidTransform.rotation;
+        }
 
+        private IEnumerator Start()
+        {
             yield return _waitForRespawn;
             _canMove = true;
         }
 
         private void Update()
         {
+            if (!GameMaster.RoundIsLive) return;
+            
             _isGrounded = GroundControl();
             humanoidAnimator.SetBool(Falling, !_isGrounded);
             
@@ -90,7 +95,7 @@ namespace BezmicanZehir.Core
             }
             else if (other.CompareTag("Finish"))
             {
-                FinishEvent();
+                //FinishEvent();
             }
         }
 
