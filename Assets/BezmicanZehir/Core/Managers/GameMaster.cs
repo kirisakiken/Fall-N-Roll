@@ -1,30 +1,32 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BezmicanZehir.Core.Managers
 {
     public class GameMaster : MonoBehaviour
     {
-        [Header("Application Settings")]
         [SerializeField] private int frameLimit;
-
         [SerializeField] private Transform endGoal;
+        
         private PlayerMove _player;
         private AIController[] _agents;
-
         private float[] _distances;
         public static int PlayerCount;
 
         public static bool RoundIsLive;
-        private bool _playerWon;
+        public static bool PlayerWon;
 
         public delegate void RoundFinish(bool playerHasWon);
         public static RoundFinish roundFinish;
 
+        public UnityEvent onFinishSinglePlayer;
+        public UnityEvent onFinishMultiPlayer;
+
         private void Awake()
         {
-            _playerWon = false;
+            PlayerWon = false;
             RoundIsLive = true;
             
             LockFrameLimit();
@@ -47,14 +49,19 @@ namespace BezmicanZehir.Core.Managers
             if (other.CompareTag("Player"))
             {
                 RoundIsLive = false;
-                _playerWon = true;
-                roundFinish?.Invoke(_playerWon);
+                PlayerWon = true;
+                //roundFinish?.Invoke(_playerWon);
+                if (LevelManager.CurrentSceneIndex == 2)
+                    onFinishMultiPlayer?.Invoke();
+                else
+                    onFinishSinglePlayer?.Invoke();
             }
             else if (other.CompareTag("AI"))
             {
                 RoundIsLive = false;
-                _playerWon = false;
-                roundFinish?.Invoke(_playerWon);
+                PlayerWon = false;
+                //roundFinish?.Invoke(PlayerWon);
+                onFinishMultiPlayer?.Invoke();
             }
         }
         private void FindPlayerAndAgents()

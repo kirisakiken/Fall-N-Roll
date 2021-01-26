@@ -95,7 +95,7 @@ namespace BezmicanZehir.Core
             }
             else if (other.CompareTag("Finish"))
             {
-                //FinishEvent();
+                FinishEvent();
             }
         }
 

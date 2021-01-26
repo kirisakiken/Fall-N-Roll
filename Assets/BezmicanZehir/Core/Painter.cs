@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 namespace BezmicanZehir.Core
 {
@@ -36,6 +37,8 @@ namespace BezmicanZehir.Core
 
         public delegate void EndSinglePlayerLevel(bool playerHasWon);
         public static EndSinglePlayerLevel endSinglePlayerLevel;
+
+        public UnityEvent paintSceneFinish;
     
         private void Start()
         {
@@ -67,7 +70,8 @@ namespace BezmicanZehir.Core
             {
                 _paintedPercentage = 100;
                 UpdateSlider(_paintedPercentage);
-                endSinglePlayerLevel?.Invoke(true);
+                //endSinglePlayerLevel?.Invoke(true);
+                paintSceneFinish?.Invoke();
                 _canPaint = false;
             }
         }

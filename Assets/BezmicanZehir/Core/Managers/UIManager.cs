@@ -37,13 +37,14 @@ namespace BezmicanZehir.Core.Managers
             _isPaused = false;
             StartCoroutine(FadeIn());
             
-            if (currentLevelIndex == 1)
+            /*if (currentLevelIndex == 1)
             {
                 Painter.endSinglePlayerLevel += OpenGameOverWindow;
                 return;
             }
-            GameMaster.roundFinish += OpenGameOverWindow;
-            maxPlayerText.text = GameMaster.PlayerCount.ToString();
+            GameMaster.roundFinish += OpenGameOverWindow;*/
+            if (LevelManager.CurrentSceneIndex == 2)
+                maxPlayerText.text = GameMaster.PlayerCount.ToString();
         }
 
         private void Update()
@@ -118,12 +119,12 @@ namespace BezmicanZehir.Core.Managers
         
         #region Events
 
-        private void OpenGameOverWindow(bool playerHasWon)
+        public void OpenGameOverWindow()
         {
             UnlockCursor();
             gameOverWindow.SetActive(true);
             
-            if (playerHasWon)
+            if (GameMaster.PlayerWon)
             {
                 playerWon.SetActive(true);
                 agentWon.SetActive(false);
