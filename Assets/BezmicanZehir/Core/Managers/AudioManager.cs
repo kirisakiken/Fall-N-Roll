@@ -1,19 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace BezmicanZehir.Core.Managers
 {
     public class AudioManager : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private AudioClip clickSound;
+        [SerializeField] private AudioClip backSound;
+        [SerializeField] private AudioSource effectSource;
+
+        public void PlayClickSound()
         {
-        
+            effectSource.clip = clickSound;
+            effectSource.Play();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void PlayBackSound()
         {
-        
+            effectSource.clip = backSound;
+            effectSource.Play();
         }
     }
 }
