@@ -6833,7 +6833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7465,7 +7465,7 @@ MonoBehaviour:
   gameOverWindow: {fileID: 656937591}
   playerWon: {fileID: 1583963819}
   agentWon: {fileID: 1968891417}
-  pauseKey: 265
+  pauseKey: 27
 --- !u!4 &656965744
 Transform:
   m_ObjectHideFlags: 0

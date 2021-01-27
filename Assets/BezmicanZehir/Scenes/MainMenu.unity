@@ -1305,7 +1305,7 @@ MonoBehaviour:
   gameOverWindow: {fileID: 0}
   playerWon: {fileID: 0}
   agentWon: {fileID: 0}
-  pauseKey: 265
+  pauseKey: 27
 --- !u!1 &540463890
 GameObject:
   m_ObjectHideFlags: 0
@@ -5060,7 +5060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

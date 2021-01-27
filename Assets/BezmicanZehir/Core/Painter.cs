@@ -33,7 +33,7 @@ namespace BezmicanZehir.Core
 
         private int _paintedPercentage;
         private Texture2D _currentTexture;
-        private Color32[] _colors;
+        private Color[] _colors;
         private MeshRenderer _paintableMeshRenderer;
         private bool _canPaint;
         private WaitForSeconds _shortDelay;
@@ -45,7 +45,7 @@ namespace BezmicanZehir.Core
             _canPaint = false;
             _paintableMeshRenderer = GetComponent<MeshRenderer>();
             _currentTexture = new Texture2D(textureWidth, textureHeight);
-            _colors = brushTexture.GetPixels32();
+            _colors = brushTexture.GetPixels();
 
             _shortDelay = new WaitForSeconds(0.01f);
             playerMove.executePaintRoutine += SetPaintRoutine;
@@ -118,7 +118,7 @@ namespace BezmicanZehir.Core
                 var x = (int) ((hitCoord.x * 256) - (brushSizeAsPixel / 2.0f)); // Center X
                 var y = (int) ((hitCoord.y * 256) - (brushSizeAsPixel / 2.0f)); // Center Y
             
-                _currentTexture.SetPixels32(x, y, brushSizeAsPixel, brushSizeAsPixel, _colors);
+                _currentTexture.SetPixels(x, y, brushSizeAsPixel, brushSizeAsPixel, _colors);
                 _currentTexture.Apply();
 
                 _paintableMeshRenderer.material.mainTexture = _currentTexture;
