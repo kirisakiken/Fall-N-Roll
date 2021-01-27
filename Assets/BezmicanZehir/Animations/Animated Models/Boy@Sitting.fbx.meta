@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4f9441b21f9a0c45900d674e0ec2324
+guid: 2219c19e6a9bffe4790535f641585998
 labels:
 - Humanoid
 ModelImporter:
@@ -7,7 +7,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Falling
+    second: Sitting
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -37,11 +37,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Falling
+      name: Sitting
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 135
+      lastFrame: 63
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
