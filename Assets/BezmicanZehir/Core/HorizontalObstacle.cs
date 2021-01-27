@@ -2,6 +2,9 @@
 
 namespace BezmicanZehir.Core
 {
+    /// <summary>
+    /// This class is used for horizontal obstacle movement.
+    /// </summary>
     public class HorizontalObstacle : MonoBehaviour
     {
         [SerializeField] private Transform childObstacle;
@@ -17,6 +20,11 @@ namespace BezmicanZehir.Core
             childObstacle.localPosition = MovementVector(horizontalOffset);
         }
 
+        /// <summary>
+        /// This function is used for horizontal obstacle's swing motion.
+        /// </summary>
+        /// <param name="offsetVector"> Start point offset in 3D world space.</param>
+        /// <returns> Target position of horizontal obstacle relative to Time.</returns>
         private Vector3 MovementVector(Vector3 offsetVector)
         {
             return new Vector3(Mathf.PingPong(Time.time * speed, horizontalLength), 0.0f, 0.0f) + offsetVector;

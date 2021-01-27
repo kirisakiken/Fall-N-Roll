@@ -6,6 +6,11 @@ namespace BezmicanZehir.Core.Managers
 {
     public static class SaveManager
     {
+        /// <summary>
+        /// Saves music and effect sound levels with given parameters.
+        /// </summary>
+        /// <param name="effectsValue"> Effect sound value.</param>
+        /// <param name="musicValue"> Music sound value.</param>
         public static void SaveAudioPreferences(float effectsValue, float musicValue)
         {
             var binFormatter = new BinaryFormatter();
@@ -22,6 +27,10 @@ namespace BezmicanZehir.Core.Managers
             fileStream.Close();
         }
 
+        /// <summary>
+        /// Loads audio preferences which is saved.
+        /// </summary>
+        /// <returns> Effects sound value and Music sound value as float array.</returns>
         public static float[] LoadAudioPreferences()
         {
             var path = Application.persistentDataPath + "/audio.kken";

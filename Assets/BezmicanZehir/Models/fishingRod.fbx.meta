@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 31e017468fa1b904995ae85bc27063df
+labels:
+- Decoration
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []

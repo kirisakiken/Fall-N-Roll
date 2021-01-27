@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c18354c1e6d49be468368e315820a395,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3569,8 +3569,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 281711395}
   humanoidTransform: {fileID: 1823296855}
   agentRigidbody: {fileID: 281711394}
@@ -4512,12 +4510,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1927372506}
+    m_TransformParent: {fileID: 1425092790}
     m_Modifications:
     - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
         type: 3}
@@ -7297,8 +7295,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 655876906}
   humanoidTransform: {fileID: 1175079669}
   agentRigidbody: {fileID: 655876905}
@@ -7876,6 +7872,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &682404012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1425092790}
+    m_Modifications:
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 549
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 370
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618935378517222047, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Water (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b, type: 3}
 --- !u!1 &684966843
 GameObject:
   m_ObjectHideFlags: 0
@@ -9742,8 +9822,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 849521995}
   humanoidTransform: {fileID: 1198793531}
   agentRigidbody: {fileID: 849521994}
@@ -14494,8 +14572,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 1191525628}
   humanoidTransform: {fileID: 1603987101}
   agentRigidbody: {fileID: 1191525627}
@@ -15353,8 +15429,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 1240577803}
   humanoidTransform: {fileID: 2046920765}
   agentRigidbody: {fileID: 1240577802}
@@ -16112,8 +16186,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 1336203328}
   humanoidTransform: {fileID: 66097286}
   agentRigidbody: {fileID: 1336203327}
@@ -16889,6 +16961,39 @@ Transform:
   m_Father: {fileID: 1450403810}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1425092789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425092790}
+  m_Layer: 0
+  m_Name: Waters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1425092790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425092789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2072583019}
+  - {fileID: 1674075349}
+  - {fileID: 1514970812}
+  m_Father: {fileID: 1927372506}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426300632
 GameObject:
   m_ObjectHideFlags: 0
@@ -17636,8 +17741,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 1483396524}
   humanoidTransform: {fileID: 241423828}
   agentRigidbody: {fileID: 1483396523}
@@ -18044,6 +18147,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1514970812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1904448940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1520107073
 GameObject:
   m_ObjectHideFlags: 0
@@ -19648,6 +19757,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668920128}
   m_CullTransparentMesh: 0
+--- !u!4 &1674075349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 682404012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674941498
 GameObject:
   m_ObjectHideFlags: 0
@@ -20590,8 +20705,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 1698010468}
   humanoidTransform: {fileID: 37486276}
   agentRigidbody: {fileID: 1698010467}
@@ -22694,8 +22807,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 1810766627}
   humanoidTransform: {fileID: 539496273}
   agentRigidbody: {fileID: 1810766626}
@@ -23980,6 +24091,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904403349}
   m_CullTransparentMesh: 0
+--- !u!1001 &1904448940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1425092790}
+    m_Modifications:
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -549
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 370
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129257518149974053, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618935378517222047, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Water (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89c23d1db8c3e544fbbfbc1c766d9e4b, type: 3}
 --- !u!1 &1904768741
 GameObject:
   m_ObjectHideFlags: 0
@@ -24397,7 +24592,7 @@ Transform:
   - {fileID: 1033254281}
   - {fileID: 1699916100}
   - {fileID: 1976272191}
-  - {fileID: 2072583019}
+  - {fileID: 1425092790}
   - {fileID: 866169543}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -25144,8 +25339,6 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  finishGoal: {fileID: 2065764690}
-  firstCheckPoint: {fileID: 1512047152}
   agentBodyTransform: {fileID: 2021479595}
   humanoidTransform: {fileID: 1343793438}
   agentRigidbody: {fileID: 2021479594}

@@ -30,6 +30,7 @@ namespace BezmicanZehir.Core.Managers
             RoundIsLive = true;
             
             LockFrameLimit();
+            SetScreenToPortrait();
             FindPlayerAndAgents();
 
             PlayerCount = _agents.Length + 1;
@@ -39,9 +40,13 @@ namespace BezmicanZehir.Core.Managers
         {
             if (!RoundIsLive) return;
 
-            PlayerMove.Rank = GetPlayerRank();
+            PlayerMove.Rank = GetPlayerRank(); // Set Player's current rank.
         }
 
+        /// <summary>
+        /// This function is used to execute finish events of current round.
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
             if (!RoundIsLive) return;
@@ -50,7 +55,6 @@ namespace BezmicanZehir.Core.Managers
             {
                 RoundIsLive = false;
                 PlayerWon = true;
-                //roundFinish?.Invoke(_playerWon);
                 if (LevelManager.CurrentSceneIndex == 2)
                     onFinishMultiPlayer?.Invoke();
                 else
@@ -60,16 +64,23 @@ namespace BezmicanZehir.Core.Managers
             {
                 RoundIsLive = false;
                 PlayerWon = false;
-                //roundFinish?.Invoke(PlayerWon);
                 onFinishMultiPlayer?.Invoke();
             }
         }
+        
+        /// <summary>
+        /// This function is used to find all agents and player in current scene.
+        /// </summary>
         private void FindPlayerAndAgents()
         {
             _player = FindObjectOfType<PlayerMove>();
             _agents = FindObjectsOfType<AIController>();
         }
 
+        /// <summary>
+        /// This function is used to determine Player's current rank during play-time.
+        /// </summary>
+        /// <returns> Player's current rank.</returns>
         private int GetPlayerRank()
         {
             var playerDist = Vector3.Distance(_player.transform.position, endGoal.position);
@@ -92,9 +103,20 @@ namespace BezmicanZehir.Core.Managers
             return counter;
         }
         
+        /// <summary>
+        /// Locks Application's frame rate to target frame rate.
+        /// </summary>
         private void LockFrameLimit()
         {
             Application.targetFrameRate = frameLimit;
+        }
+
+        /// <summary>
+        /// Sets screen orientation to Portrait.
+        /// </summary>
+        private void SetScreenToPortrait()
+        {
+            Screen.orientation = ScreenOrientation.Portrait;
         }
     }
 }

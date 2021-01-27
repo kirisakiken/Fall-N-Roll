@@ -7,6 +7,9 @@ using UnityEngine.Events;
 
 namespace BezmicanZehir.Core
 {
+    /// <summary>
+    /// This class is used to paint on surface during run-time.
+    /// </summary>
     public class Painter : MonoBehaviour
     {
         [Header("General Fields")]
@@ -20,6 +23,7 @@ namespace BezmicanZehir.Core
         [SerializeField] private Texture2D brushTexture;
         [SerializeField] [Min(2)] private int textureWidth;
         [SerializeField] [Min(2)] private int textureHeight;
+        [SerializeField] private Color paintColour;
 
         [Header("UI Fields")] 
         [SerializeField] private RectTransform sliderParent;
@@ -32,11 +36,7 @@ namespace BezmicanZehir.Core
         private Color32[] _colors;
         private MeshRenderer _paintableMeshRenderer;
         private bool _canPaint;
-        private WaitForSeconds _waitForFinish;
         private WaitForSeconds _shortDelay;
-
-        public delegate void EndSinglePlayerLevel(bool playerHasWon);
-        public static EndSinglePlayerLevel endSinglePlayerLevel;
 
         public UnityEvent paintSceneFinish;
     
@@ -47,7 +47,6 @@ namespace BezmicanZehir.Core
             _currentTexture = new Texture2D(textureWidth, textureHeight);
             _colors = brushTexture.GetPixels32();
 
-            _waitForFinish = new WaitForSeconds(1.3f);
             _shortDelay = new WaitForSeconds(0.01f);
             playerMove.executePaintRoutine += SetPaintRoutine;
         }
@@ -62,7 +61,7 @@ namespace BezmicanZehir.Core
             }
             if (Input.GetMouseButtonUp(0))
             {
-                _paintedPercentage = GetPaintedPercentage(_currentTexture, Color.red);
+                _paintedPercentage = GetPaintedPercentage(_currentTexture, paintColour);
                 UpdateSlider(_paintedPercentage);
             }
 
@@ -70,17 +69,25 @@ namespace BezmicanZehir.Core
             {
                 _paintedPercentage = 100;
                 UpdateSlider(_paintedPercentage);
-                //endSinglePlayerLevel?.Invoke(true);
                 paintSceneFinish?.Invoke();
                 _canPaint = false;
             }
         }
 
+        /// <summary>
+        /// This function executes Paint routine.
+        /// </summary>
         private void SetPaintRoutine()
         {
             StartCoroutine(ExecutePaint());
         }
 
+        /// <summary>
+        /// This function mainly used for animation and smooth movements before painting event.
+        /// Executes after player reaches the finish line on SinglePlayer level.
+        /// Camera smoothly moves and rotates towards targets.
+        /// </summary>
+        /// <returns> Returns short delays for smooth camera movement.</returns>
         private IEnumerator ExecutePaint()
         {
             do
@@ -95,6 +102,10 @@ namespace BezmicanZehir.Core
             _canPaint = true;
         }
 
+        /// <summary>
+        /// This function used to paint on surface. It instances new texture on the target surface.
+        /// And manipulates texture pixels with given Input.mousePosition.
+        /// </summary>
         private void PaintOnSurface()
         {
             var ray = paintCamera.ScreenPointToRay(Input.mousePosition);
@@ -104,8 +115,8 @@ namespace BezmicanZehir.Core
             {
                 var hitCoord = hit.textureCoord;
             
-                var x = (int) ((hitCoord.x * 256) - (brushSizeAsPixel / 2.0f)); // Center x
-                var y = (int) ((hitCoord.y * 256) - (brushSizeAsPixel / 2.0f)); // Center y
+                var x = (int) ((hitCoord.x * 256) - (brushSizeAsPixel / 2.0f)); // Center X
+                var y = (int) ((hitCoord.y * 256) - (brushSizeAsPixel / 2.0f)); // Center Y
             
                 _currentTexture.SetPixels32(x, y, brushSizeAsPixel, brushSizeAsPixel, _colors);
                 _currentTexture.Apply();
@@ -114,18 +125,29 @@ namespace BezmicanZehir.Core
             }
         }
     
-        private int GetPaintedPercentage(Texture2D texture2D, Color targetColor)
+        /// <summary>
+        /// This function reads all pixels from the target Texture2D and calculates
+        /// painted percentage with comparing targetColour to read colour.
+        /// </summary>
+        /// <param name="texture2D"> MainTexture of target painted surface.</param>
+        /// <param name="targetColour"> Comparison colour.</param>
+        /// <returns> Returns percentage of targetColour from target texture.</returns>
+        private int GetPaintedPercentage(Texture2D texture2D, Color targetColour)
         {
             float pixelCount = texture2D.width * texture2D.height;
             if (pixelCount == 0) return 0;
 
-            var redPixels = texture2D.GetPixels32().Where(t => t == targetColor).ToArray();
+            var redPixels = texture2D.GetPixels32().Where(t => t == targetColour).ToArray();
             if (redPixels.Length == 0) return 0;
 
             var percentage = (int) ((redPixels.Length / pixelCount) * 100);
             return percentage;
         }
 
+        /// <summary>
+        /// This function is used to visualize and show Player's progress of painting.
+        /// </summary>
+        /// <param name="val"> Painted percentage value.</param>
         private void UpdateSlider(int val)
         {
             slider.value = val;

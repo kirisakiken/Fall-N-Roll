@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 8d5dfcb8c6a2f3f4285875f031f946b5
+labels:
+- Paint
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0

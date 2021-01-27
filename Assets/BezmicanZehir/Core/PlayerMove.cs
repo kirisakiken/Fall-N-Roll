@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 namespace BezmicanZehir.Core
 {
+    /// <summary>
+    /// This class is mainly used to move Player in 3D world space.
+    /// </summary>
     public class PlayerMove : MonoBehaviour
     {
         [Header("Input Fields")]
@@ -76,11 +79,14 @@ namespace BezmicanZehir.Core
             
             MovementInput();
         }
+        
+        #region Events (Collision/Trigger)
 
         private void OnCollisionEnter(Collision other)
         {
             if (!_canMove) return;
             
+            // Used to execute PlayerDeath event chain
             if (other.collider.CompareTag("Death") || other.collider.CompareTag("Obstacle"))
             {
                 DeathEvent();
@@ -89,18 +95,25 @@ namespace BezmicanZehir.Core
 
         private void OnTriggerEnter(Collider other)
         {
+            // If player falls into Water execute : FallRespawnEvent()
             if (other.CompareTag("Water"))
             {
                 StartCoroutine(FallRespawnEvent());
             }
+            // If player finishes the round execute : FinishEvent()
             else if (other.CompareTag("Finish"))
             {
                 FinishEvent();
             }
         }
+        
+        #endregion
 
         #region Movement
         
+        /// <summary>
+        /// Main input function to move player. 
+        /// </summary>
         private void MovementInput()
         {
             var horizontalInput = Input.GetAxis(horizontalInputName);
@@ -118,6 +131,11 @@ namespace BezmicanZehir.Core
             PlayerRotation(horizontalInput, verticalInput);
         }
 
+        /// <summary>
+        /// Rotates player's visual body (only mesh) with given parameters.
+        /// </summary>
+        /// <param name="horizontal"> Right input.</param>
+        /// <param name="vertical"> Forward input.</param>
         private void PlayerRotation(float horizontal, float vertical)
         {
             var angle = RotatePlayerToTargetInput(horizontal, vertical);
@@ -126,6 +144,12 @@ namespace BezmicanZehir.Core
             humanoidTransform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
         }
 
+        /// <summary>
+        /// This function used to calculate rotation angle on Y axis with given parameters.
+        /// </summary>
+        /// <param name="horizontal"> Right input.</param>
+        /// <param name="vertical"> Forward input.</param>
+        /// <returns> Target Y Angle as Degrees.</returns>
         private float RotatePlayerToTargetInput(float horizontal, float vertical)
         {
             return Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
@@ -135,6 +159,11 @@ namespace BezmicanZehir.Core
 
         #region Animation
         
+        /// <summary>
+        /// This function is used to toggle between IDLE-RUNNING animations with given parameters.
+        /// </summary>
+        /// <param name="horizontalInput"> Right input.</param>
+        /// <param name="verticalInput"> Forward input.</param>
         private void AnimationController(float horizontalInput, float verticalInput)
         {
             if (horizontalInput != 0.0f || verticalInput != 0.0f)
@@ -151,6 +180,9 @@ namespace BezmicanZehir.Core
         
         #region Events
 
+        /// <summary>
+        /// This function is used to execute chain events for PlayerDeath
+        /// </summary>
         private void DeathEvent()
         {
             _canMove = false;
@@ -158,6 +190,10 @@ namespace BezmicanZehir.Core
             StartCoroutine(RespawnEvent());
         }
 
+        /// <summary>
+        /// This function used to respawn player after hitting obstacle.
+        /// </summary>
+        /// <returns> Waits for death and landing animations.</returns>
         private IEnumerator RespawnEvent()
         {
             yield return _waitForDeath; // Wait Until death animation finishes.
@@ -170,6 +206,10 @@ namespace BezmicanZehir.Core
             _canMove = true;
         }
 
+        /// <summary>
+        /// This function is used to respawn player after falling into water.
+        /// </summary>
+        /// <returns> Waits for landing animation.</returns>
         private IEnumerator FallRespawnEvent()
         {
             _canMove = false;
@@ -182,6 +222,9 @@ namespace BezmicanZehir.Core
             _canMove = true;
         }
 
+        /// <summary>
+        /// This function executes after player finishes the round.
+        /// </summary>
         private void FinishEvent()
         {
             _canMove = false;
@@ -196,16 +239,26 @@ namespace BezmicanZehir.Core
 
         #region General
 
+        /// <summary>
+        /// This function is used to determine if player is grounded.
+        /// </summary>
+        /// <returns> isGrounded.</returns>
         private bool GroundControl()
         {
             return Physics.SphereCast(transform.position, 1.0f, Vector3.down, out var theHit);
         }
         
+        /// <summary>
+        /// This function is used to lock the cursor.
+        /// </summary>
         private void LockCursor()
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        /// <summary>
+        /// This function is used to unlock the cursor.
+        /// </summary>
         private void UnlockCursor()
         {
             Cursor.lockState = CursorLockMode.None;

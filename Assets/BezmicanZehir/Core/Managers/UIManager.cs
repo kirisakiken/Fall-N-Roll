@@ -54,12 +54,6 @@ namespace BezmicanZehir.Core.Managers
             _isPaused = false;
             StartCoroutine(FadeIn());
             
-            /*if (currentLevelIndex == 1)
-            {
-                Painter.endSinglePlayerLevel += OpenGameOverWindow;
-                return;
-            }
-            GameMaster.roundFinish += OpenGameOverWindow;*/
             if (LevelManager.CurrentSceneIndex == 2)
                 maxPlayerText.text = GameMaster.PlayerCount.ToString();
         }
@@ -89,6 +83,9 @@ namespace BezmicanZehir.Core.Managers
 
         #region Pause Menu
 
+        /// <summary>
+        /// Pauses game.
+        /// </summary>
         private void PauseGame()
         {
             _isPaused = true;
@@ -97,6 +94,9 @@ namespace BezmicanZehir.Core.Managers
             LevelManager.PauseGame();
         }
 
+        /// <summary>
+        /// Resumes game.
+        /// </summary>
         public void ResumeGame()
         {
             _isPaused = false;
@@ -105,12 +105,18 @@ namespace BezmicanZehir.Core.Managers
             LevelManager.ResumeGame();
         }
         
+        /// <summary>
+        /// This function is used to open pause menu.
+        /// </summary>
         public void OpenPauseMenu()
         {
             pauseMenu.gameObject.SetActive(true);
             pauseMenu.interactable = true;
         }
 
+        /// <summary>
+        /// This function is used to close pause menu.
+        /// </summary>
         public void ClosePauseMenu()
         {
             pauseMenu.gameObject.SetActive(false);
@@ -121,23 +127,35 @@ namespace BezmicanZehir.Core.Managers
         
         #region Settings
 
+        /// <summary>
+        /// This function is used to open settings menu.
+        /// </summary>
         public void OpenSettingsMenu()
         {
             settingsMenu.gameObject.SetActive(true);
             settingsMenu.interactable = true;
         }
 
+        /// <summary>
+        /// This function is used to close settings menu.
+        /// </summary>
         public void CloseSettingsMenu()
         {
             settingsMenu.gameObject.SetActive(false);
             settingsMenu.interactable = false;
         }
 
+        /// <summary>
+        /// Saves Audio Settings.
+        /// </summary>
         public void SaveSettings()
         {
             SaveManager.SaveAudioPreferences(effectSlider.value, musicSlider.value);
         }
 
+        /// <summary>
+        /// Loads Audio Settings.
+        /// </summary>
         public void LoadSettings()
         {
             var data = SaveManager.LoadAudioPreferences();
@@ -154,11 +172,17 @@ namespace BezmicanZehir.Core.Managers
         
         #region Audio
 
+        /// <summary>
+        /// This function is used to set Effects volume.
+        /// </summary>
         public void SetEffectVolume()
         {
             _audioManager.SetEffectVolume(effectSlider.value);
         }
 
+        /// <summary>
+        /// This function is used to set Music volume.
+        /// </summary>
         public void SetMusicVolume()
         {
             _audioManager.SetMusicVolume(musicSlider.value);
@@ -168,6 +192,9 @@ namespace BezmicanZehir.Core.Managers
         
         #region Events
 
+        /// <summary>
+        /// This function is used to open Game Over window after player/agent finishes the round.
+        /// </summary>
         public void OpenGameOverWindow()
         {
             UnlockCursor();
@@ -185,6 +212,9 @@ namespace BezmicanZehir.Core.Managers
             }
         }
         
+        /// <summary>
+        /// This function is used to update Player's rank on UI.
+        /// </summary>
         private void SetPlayerRankOnUI()
         {
             _playerRank = PlayerMove.Rank;
@@ -195,23 +225,38 @@ namespace BezmicanZehir.Core.Managers
         
         #region General
 
+        /// <summary>
+        /// This function enables canvas group with given parameter.
+        /// </summary>
+        /// <param name="targetGroup"> Target CanvasGroup.</param>
         public void OpenWindow(CanvasGroup targetGroup)
         {
             targetGroup.gameObject.SetActive(true);
             targetGroup.interactable = true;
         }
 
+        /// <summary>
+        /// This function disables canvas group with given parameter.
+        /// </summary>
+        /// <param name="targetGroup"> Target CanvasGroup.</param>
         public void CloseWindow(CanvasGroup targetGroup)
         {
             targetGroup.gameObject.SetActive(false);
             targetGroup.interactable = false;
         }
 
+        /// <summary>
+        /// This function is used to Load Main Menu with UI buttons.
+        /// </summary>
         public void ReturnToMainMenu()
         {
             StartCoroutine(LoadMainScene());
         }
 
+        /// <summary>
+        /// This function is used to Load Main Menu with animation.
+        /// </summary>
+        /// <returns> Waits for fade out animation.</returns>
         private IEnumerator LoadMainScene()
         {
             fadeImageAnimator.gameObject.SetActive(true);
@@ -220,16 +265,26 @@ namespace BezmicanZehir.Core.Managers
             levelManager.LoadLevel(0);
         }
 
+        /// <summary>
+        /// Loads scene with given parameter.
+        /// </summary>
+        /// <param name="sceneIndex"> Target scene index.</param>
         public void LoadTargetScene(int sceneIndex)
         {
             StartCoroutine(FadeOut(sceneIndex));
         }
 
+        /// <summary>
+        /// Locks cursor.
+        /// </summary>
         private void LockCursor()
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        /// <summary>
+        /// Unlocks cursor.
+        /// </summary>
         private void UnlockCursor()
         {
             Cursor.lockState = CursorLockMode.None;
@@ -237,6 +292,10 @@ namespace BezmicanZehir.Core.Managers
 
         #region Fade
 
+        /// <summary>
+        /// Executes fade in animation.
+        /// </summary>
+        /// <returns> Waits for animation to finish.</returns>
         private IEnumerator FadeIn()
         {
             fadeImageAnimator.SetBool(Out, false);
@@ -244,6 +303,11 @@ namespace BezmicanZehir.Core.Managers
             fadeImageAnimator.gameObject.SetActive(false);
         }
         
+        /// <summary>
+        /// Executes fade out animation and loads scene with given parameter.
+        /// </summary>
+        /// <param name="targetSceneIndex"> Target scene to load.</param>
+        /// <returns> Waits for animation to finish.</returns>
         private IEnumerator FadeOut(int targetSceneIndex)
         {
             fadeImageAnimator.gameObject.SetActive(true);

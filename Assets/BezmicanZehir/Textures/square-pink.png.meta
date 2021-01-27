@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 58ab4176005197642babf035c72aee16
+labels:
+- Paint
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

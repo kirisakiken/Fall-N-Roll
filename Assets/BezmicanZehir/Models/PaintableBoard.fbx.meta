@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: f986c61b80eb0d84c855fd3c8e34bc92
+labels:
+- Paint
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []

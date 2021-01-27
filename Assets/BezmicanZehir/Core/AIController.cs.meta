@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: df33a72d265f65743b3a4916d7a4ec46
+labels:
+- MachineLearning
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
