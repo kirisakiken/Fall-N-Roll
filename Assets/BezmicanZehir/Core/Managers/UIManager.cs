@@ -37,6 +37,17 @@ namespace BezmicanZehir.Core.Managers
         private void Awake()
         {
             _audioManager = FindObjectOfType<AudioManager>();
+
+            var data = SaveManager.LoadAudioPreferences();
+            if (data is null)
+            {
+                Debug.Log("Data is null");
+                SaveSettings();
+            }
+            else
+            {
+                LoadSettings();
+            }
             
             fadeImageAnimator.gameObject.SetActive(true);
             
@@ -124,7 +135,19 @@ namespace BezmicanZehir.Core.Managers
 
         public void SaveSettings()
         {
-            
+            SaveManager.SaveAudioPreferences(effectSlider.value, musicSlider.value);
+        }
+
+        public void LoadSettings()
+        {
+            var data = SaveManager.LoadAudioPreferences();
+            Debug.Log($"Loaded Data 0 : {data[0]}");
+            Debug.Log($"Loaded Data 1 : {data[1]}");
+            if (!(data is null))
+            {
+                effectSlider.value = data[0];
+                musicSlider.value = data[1];
+            }
         }
         
         #endregion
