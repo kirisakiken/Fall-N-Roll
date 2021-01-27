@@ -41,7 +41,6 @@ namespace BezmicanZehir.Core.Managers
             var data = SaveManager.LoadAudioPreferences();
             if (data is null)
             {
-                Debug.Log("Data is null");
                 SaveSettings();
             }
             else
@@ -159,8 +158,6 @@ namespace BezmicanZehir.Core.Managers
         public void LoadSettings()
         {
             var data = SaveManager.LoadAudioPreferences();
-            Debug.Log($"Loaded Data 0 : {data[0]}");
-            Debug.Log($"Loaded Data 1 : {data[1]}");
             if (!(data is null))
             {
                 effectSlider.value = data[0];
