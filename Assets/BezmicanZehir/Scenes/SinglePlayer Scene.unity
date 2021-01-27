@@ -517,7 +517,7 @@ Transform:
   m_Children:
   - {fileID: 1570817911}
   m_Father: {fileID: 1206055652}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &143347343
 MonoBehaviour:
@@ -531,6 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e474a3cb48c3ac4db101c15be7ee958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectMixer: {fileID: 24100000, guid: a3a146f52ab3e194daaf554305ae83c3, type: 2}
+  musicMixer: {fileID: 24100000, guid: 413dcef88f43b6f448d28307eb39a425, type: 2}
   clickSound: {fileID: 8300000, guid: 134c83d6b10fe6945bba6b0cc14be6c1, type: 3}
   backSound: {fileID: 8300000, guid: dbe60ddfb76cce24e99f5e95473c6d8a, type: 3}
   effectSource: {fileID: 1570817912}
@@ -1441,13 +1443,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 908562869}
   m_HandleRect: {fileID: 1504176589}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1957207960}
+        m_MethodName: SetEffectVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &408432955
 GameObject:
   m_ObjectHideFlags: 0
@@ -3768,11 +3781,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 143347342}
   - {fileID: 1217589189}
   - {fileID: 1957207959}
   - {fileID: 1809329131}
   - {fileID: 2142548490}
-  - {fileID: 143347342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3879,7 +3892,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1206055652}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1217589190
 MonoBehaviour:
@@ -4835,7 +4848,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 134c83d6b10fe6945bba6b0cc14be6c1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5640,13 +5653,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 819624102}
   m_HandleRect: {fileID: 1207170379}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1957207960}
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1792844251
 GameObject:
   m_ObjectHideFlags: 0
@@ -5824,7 +5848,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1206055652}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1809329132
 MonoBehaviour:
@@ -6319,7 +6343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1206055652}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1957207960
 MonoBehaviour:
@@ -6340,6 +6364,8 @@ MonoBehaviour:
   fadeImageAnimator: {fileID: 337893820}
   playerRankText: {fileID: 0}
   maxPlayerText: {fileID: 0}
+  musicSlider: {fileID: 1781834102}
+  effectSlider: {fileID: 377448534}
   gameOverWindow: {fileID: 1840541851}
   playerWon: {fileID: 2031179056}
   agentWon: {fileID: 1732787631}
@@ -7028,7 +7054,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1206055652}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450651658289453 stripped
 Transform:

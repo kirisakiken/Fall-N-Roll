@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c18354c1e6d49be468368e315820a395,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5222,7 +5222,7 @@ GameObject:
   - component: {fileID: 431457734}
   - component: {fileID: 431457735}
   m_Layer: 5
-  m_Name: Sound Slider
+  m_Name: Effect Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5294,13 +5294,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 837209886}
   m_HandleRect: {fileID: 2031350825}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 656965743}
+        m_MethodName: SetEffectVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &439714825
 GameObject:
   m_ObjectHideFlags: 0
@@ -7453,6 +7464,8 @@ MonoBehaviour:
   fadeImageAnimator: {fileID: 611416961}
   playerRankText: {fileID: 1893751270}
   maxPlayerText: {fileID: 230484046}
+  musicSlider: {fileID: 995945244}
+  effectSlider: {fileID: 431457735}
   gameOverWindow: {fileID: 656937591}
   playerWon: {fileID: 1583963819}
   agentWon: {fileID: 1968891417}
@@ -7469,7 +7482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 680879385}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660400628
 GameObject:
@@ -7857,10 +7870,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2082093606}
+  - {fileID: 1506955524}
   - {fileID: 656965744}
   - {fileID: 1804871696}
   - {fileID: 1229341820}
-  - {fileID: 1506955524}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11944,13 +11957,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 443589066}
   m_HandleRect: {fileID: 1596651814}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 656965743}
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1000924143
 GameObject:
   m_ObjectHideFlags: 0
@@ -15095,7 +15119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 680879385}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232123049
 GameObject:
@@ -17835,7 +17859,7 @@ Transform:
   m_Children:
   - {fileID: 151157946}
   m_Father: {fileID: 680879385}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1506955525
 MonoBehaviour:
@@ -17849,6 +17873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e474a3cb48c3ac4db101c15be7ee958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectMixer: {fileID: 24100000, guid: a3a146f52ab3e194daaf554305ae83c3, type: 2}
+  musicMixer: {fileID: 24100000, guid: 413dcef88f43b6f448d28307eb39a425, type: 2}
   clickSound: {fileID: 8300000, guid: 134c83d6b10fe6945bba6b0cc14be6c1, type: 3}
   backSound: {fileID: 8300000, guid: dbe60ddfb76cce24e99f5e95473c6d8a, type: 3}
   effectSource: {fileID: 151157947}
@@ -22588,7 +22614,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 680879385}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810766619
 GameObject:

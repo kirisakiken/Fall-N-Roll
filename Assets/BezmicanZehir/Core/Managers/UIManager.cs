@@ -7,8 +7,10 @@ namespace BezmicanZehir.Core.Managers
 {
     public class UIManager : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private int currentLevelIndex;
+        private AudioManager _audioManager;
         
         [Header("UI Groups")]
         [SerializeField] private CanvasGroup pauseMenu;
@@ -16,6 +18,8 @@ namespace BezmicanZehir.Core.Managers
         [SerializeField] private Animator fadeImageAnimator;
         [SerializeField] private TMP_Text playerRankText;
         [SerializeField] private TMP_Text maxPlayerText;
+        [SerializeField] private Slider musicSlider;
+        [SerializeField] private Slider effectSlider;
         private int _playerRank;
         private static readonly int Out = Animator.StringToHash("Out");
 
@@ -32,6 +36,8 @@ namespace BezmicanZehir.Core.Managers
 
         private void Awake()
         {
+            _audioManager = FindObjectOfType<AudioManager>();
+            
             fadeImageAnimator.gameObject.SetActive(true);
             
             _isPaused = false;
@@ -45,6 +51,12 @@ namespace BezmicanZehir.Core.Managers
             GameMaster.roundFinish += OpenGameOverWindow;*/
             if (LevelManager.CurrentSceneIndex == 2)
                 maxPlayerText.text = GameMaster.PlayerCount.ToString();
+        }
+
+        private void Start()
+        {
+            SetEffectVolume();
+            SetMusicVolume();
         }
 
         private void Update()
@@ -113,6 +125,20 @@ namespace BezmicanZehir.Core.Managers
         public void SaveSettings()
         {
             
+        }
+        
+        #endregion
+        
+        #region Audio
+
+        public void SetEffectVolume()
+        {
+            _audioManager.SetEffectVolume(effectSlider.value);
+        }
+
+        public void SetMusicVolume()
+        {
+            _audioManager.SetMusicVolume(musicSlider.value);
         }
         
         #endregion

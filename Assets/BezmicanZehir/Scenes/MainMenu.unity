@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 13eeff513be9bf041adab5c3e39dafab,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -340,7 +340,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 369714787}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &140445141
 MonoBehaviour:
@@ -934,10 +934,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1746129036}
   - {fileID: 518519984}
   - {fileID: 411366687}
   - {fileID: 140445140}
-  - {fileID: 1746129036}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -970,7 +970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 369714787}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &411366688
 MonoBehaviour:
@@ -1204,7 +1204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 369714787}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &518519985
 MonoBehaviour:
@@ -1225,6 +1225,8 @@ MonoBehaviour:
   fadeImageAnimator: {fileID: 1941921318}
   playerRankText: {fileID: 0}
   maxPlayerText: {fileID: 0}
+  musicSlider: {fileID: 2082909761}
+  effectSlider: {fileID: 1143605223}
   gameOverWindow: {fileID: 0}
   playerWon: {fileID: 0}
   agentWon: {fileID: 0}
@@ -1831,7 +1833,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2065,9 +2067,9 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 383745af0e320a1408041189a6e12e23, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2279,7 +2281,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 134c83d6b10fe6945bba6b0cc14be6c1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2470,7 +2472,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2771,13 +2773,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1029404618}
   m_HandleRect: {fileID: 1271862772}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518519985}
+        m_MethodName: SetEffectVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1173514713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,8 +2938,8 @@ RectTransform:
   m_Father: {fileID: 324869995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3282,8 +3295,8 @@ RectTransform:
   m_Father: {fileID: 577940362}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4512,7 +4525,7 @@ Transform:
   m_Children:
   - {fileID: 891676530}
   m_Father: {fileID: 369714787}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1746129037
 MonoBehaviour:
@@ -4526,6 +4539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e474a3cb48c3ac4db101c15be7ee958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectMixer: {fileID: 24100000, guid: a3a146f52ab3e194daaf554305ae83c3, type: 2}
+  musicMixer: {fileID: 24100000, guid: 413dcef88f43b6f448d28307eb39a425, type: 2}
   clickSound: {fileID: 8300000, guid: 134c83d6b10fe6945bba6b0cc14be6c1, type: 3}
   backSound: {fileID: 8300000, guid: dbe60ddfb76cce24e99f5e95473c6d8a, type: 3}
   effectSource: {fileID: 891676531}
@@ -5230,13 +5245,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 761511405}
   m_HandleRect: {fileID: 1379740018}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 518519985}
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2122232852
 GameObject:
   m_ObjectHideFlags: 0
