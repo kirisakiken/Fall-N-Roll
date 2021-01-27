@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: f715d9f03c2e11e4ab42cfee913fb790,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6875,7 +6875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2031179057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8166,7 +8166,7 @@ MonoBehaviour:
   brushTexture: {fileID: 2800000, guid: 189d14a2ec8633b4199a6060645cf87b, type: 3}
   textureWidth: 256
   textureHeight: 256
-  paintColour: {r: 0, g: 0, b: 0, a: 0}
+  paintColour: {r: 1, g: 0, b: 0, a: 1}
   sliderParent: {fileID: 749440332}
   slider: {fileID: 1068835502}
   percentageText: {fileID: 357814547}
@@ -8174,7 +8174,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1957207960}
-        m_MethodName: OpenGameOverWindow
+        m_MethodName: OpenGameOverWindowForPaintScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

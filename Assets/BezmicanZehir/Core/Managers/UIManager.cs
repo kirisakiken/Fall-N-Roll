@@ -210,6 +210,18 @@ namespace BezmicanZehir.Core.Managers
         }
         
         /// <summary>
+        /// This function is used to open Game Over window after player/agent finishes the round.
+        /// Only used for SinglePlayer scene.
+        /// </summary>
+        public void OpenGameOverWindowForPaintScene()
+        {
+            UnlockCursor();
+            gameOverWindow.SetActive(true);
+            playerWon.SetActive(true);
+            agentWon.SetActive(false);
+        }
+        
+        /// <summary>
         /// This function is used to update Player's rank on UI.
         /// </summary>
         private void SetPlayerRankOnUI()
