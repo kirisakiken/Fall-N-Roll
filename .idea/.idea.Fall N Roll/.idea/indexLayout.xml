@@ -24,9 +24,9 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
-      <Path>Builds</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>StandaloneBuild</Path>
       <Path>Temp</Path>
       <Path>config</Path>
       <Path>obj</Path>
